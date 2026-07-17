@@ -1,8 +1,8 @@
-# 💳 Credit Risk Analytics Pipeline using AWS S3, Python & Power BI
+# 💳 Credit Risk Analytics Pipeline using Python & Power BI
 
 ## 📖 Project Overview
 
-This project demonstrates an end-to-end data analytics pipeline for analyzing customer credit card default behavior using the UCI Credit Card dataset. The project follows an industry-oriented workflow by storing raw data on Amazon S3, performing ETL (Extract, Transform, Load) operations using Python, conducting Exploratory Data Analysis (EDA), engineering meaningful business features, and developing an interactive Power BI dashboard for credit risk analysis.
+This project demonstrates an end-to-end data analytics workflow for analyzing customer credit card default behavior using the UCI Credit Card dataset. The entire workflow — data extraction, cleaning, transformation, exploratory data analysis (EDA), feature engineering, and KPI calculation — is implemented in a single Jupyter Notebook, followed by an interactive Power BI dashboard for credit risk analysis.
 
 The objective of this project is to simulate a real-world financial analytics workflow similar to those used in banking and financial institutions for customer behavior analysis and risk assessment.
 
@@ -10,11 +10,11 @@ The objective of this project is to simulate a real-world financial analytics wo
 
 # 🎯 Objectives
 
-* Store raw datasets in AWS S3.
-* Build a Python-based ETL pipeline.
+* Build a Python-based ETL workflow within a single notebook.
 * Perform comprehensive data cleaning and preprocessing.
 * Conduct Exploratory Data Analysis (EDA).
 * Engineer business-oriented features for analysis.
+* Calculate key business KPIs for credit risk.
 * Build an interactive Power BI dashboard.
 * Generate actionable business insights regarding customer credit behavior and default risk.
 
@@ -26,22 +26,22 @@ The objective of this project is to simulate a real-world financial analytics wo
                  Kaggle Dataset
                         │
                         ▼
-                AWS S3 (Raw Data)
+              Raw Data (Local/CSV)
                         │
                         ▼
-          Python ETL Pipeline (Extract)
+        Python Notebook: Extract & Load
                         │
                         ▼
             Data Cleaning & Transformation
                         │
                         ▼
-            Feature Engineering & Validation
-                        │
-                        ▼
-         Cleaned Dataset Stored in AWS S3
+            Feature Engineering & KPIs
                         │
                         ▼
          Exploratory Data Analysis (EDA)
+                        │
+                        ▼
+            Cleaned Dataset (CSV Export)
                         │
                         ▼
           Interactive Power BI Dashboard
@@ -56,14 +56,11 @@ credit-risk-analytics/
 
 │
 ├── data/
-│
-├── etl/
-│   ├── extract.py
-│   ├── transform.py
-│   └── load.py
+│   ├── UCI_Credit_Card.csv
+│   └── cleaned_credit_data.csv
 │
 ├── notebooks/
-│   └── credit_risk_eda.ipynb
+│   └── credit_risk_analysis.ipynb
 │
 ├── dashboard/
 │   └── Credit_Risk_Dashboard.pbix
@@ -99,53 +96,44 @@ The dataset contains information about credit card customers including:
 
 ---
 
-# ☁️ AWS S3 Integration
+# ⚙️ Notebook Workflow
 
-Amazon S3 is used as the cloud storage layer.
+All steps below are performed within a single notebook: `notebooks/credit_risk_analysis.ipynb`
 
-### Bucket Structure
+## 1. Extract & Load
 
-```
-credit-risk-data/
+* Read raw dataset from local storage
+* Validate file integrity and structure
 
-raw/
-    UCI_Credit_Card.csv
-
-cleaned/
-    cleaned_credit_data.csv
-```
-
-The ETL pipeline extracts the raw dataset from Amazon S3, performs all preprocessing tasks, and uploads the cleaned dataset back to the S3 bucket.
-
----
-
-# ⚙️ ETL Pipeline
-
-## Extract
-
-* Read raw dataset from Amazon S3
-* Validate file integrity
-
-## Transform
+## 2. Data Cleaning & Transformation
 
 * Handle missing values
 * Remove duplicate records
 * Correct inconsistent data
 * Convert data types
-* Rename columns
-* Feature engineering
-* Data validation
+* Rename columns for clarity
 
-## Load
+## 3. Feature Engineering
 
-* Store cleaned dataset
-* Upload processed dataset to Amazon S3
+* Total Bill Amount
+* Total Payment Amount
+* Average Bill Amount
+* Average Payment Amount
+* Credit Utilization Ratio
+* Payment Ratio
+* Number of Delayed Payments
+* High-Risk Customer Indicator
 
----
+## 4. KPI Calculation
 
-# 📈 Exploratory Data Analysis (EDA)
+* Overall Default Rate
+* Average Credit Limit
+* Average Credit Utilization
+* Average Payment Ratio
+* High-Risk Customer Percentage
+* Segment-wise Default Rates (by age, gender, education, marriage)
 
-The project includes extensive exploratory analysis covering:
+## 5. Exploratory Data Analysis (EDA)
 
 ### Dataset Overview
 
@@ -190,20 +178,9 @@ The project includes extensive exploratory analysis covering:
 * Bill Amount
 * Payment Amount
 
----
+## 6. Export
 
-# 🔧 Feature Engineering
-
-Additional analytical features include:
-
-* Total Bill Amount
-* Total Payment Amount
-* Average Bill Amount
-* Average Payment Amount
-* Credit Utilization Ratio
-* Payment Ratio
-* Number of Delayed Payments
-* High-Risk Customer Indicator
+* Cleaned and feature-engineered dataset exported as CSV for use in Power BI
 
 ---
 
@@ -261,7 +238,7 @@ The dashboard enables analysis of:
 * NumPy
 * Matplotlib
 * Seaborn
-* Amazon AWS S3
+* Jupyter Notebook
 * Power BI
 * Git
 * GitHub
@@ -270,10 +247,10 @@ The dashboard enables analysis of:
 
 # 🚀 Future Enhancements
 
+* Cloud Data Warehouse Integration (AWS S3 / Azure / GCP)
 * SQL Data Warehouse Integration
 * Automated ETL Scheduling
 * Machine Learning-based Default Prediction
-* Cloud Data Warehouse Integration
 * Interactive Reporting Automation
 
 ---
@@ -282,11 +259,11 @@ The dashboard enables analysis of:
 
 Through this project, I gained practical experience in:
 
-* Cloud-based data storage using AWS S3
-* Building ETL pipelines
+* Building an end-to-end ETL workflow in Python
 * Data cleaning and preprocessing
 * Exploratory Data Analysis
 * Feature engineering
+* KPI design and calculation for financial analytics
 * Financial data analytics
 * Dashboard development using Power BI
 * End-to-end analytics workflow
@@ -296,4 +273,3 @@ Through this project, I gained practical experience in:
 # 👨‍💻 Author
 
 **Priyanshu Yadav**
-
